@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Job application tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <h1>Job application tracker</h1>
+        <p id="summary"></p>
+      </div>
+      <div class="tools">
+        <input type="search" id="search" placeholder="Search company or role" aria-label="Search applications">
+        <button class="primary" id="add">Add application</button>
+      </div>
+    </header>
+    <p id="error" role="alert" hidden></p>
+    <div class="board" id="board"></div>
+  </main>
+
+  <dialog id="dlg">
+    <h2 id="dlgTitle">Add application</h2>
+    <form id="form">
+      <div class="row">
+        <label>Company<input id="f-company" required></label>
+        <label>Role<input id="f-role" required></label>
+      </div>
+      <div class="row">
+        <label>Status<select id="f-status"></select></label>
+        <label>Date applied<input type="date" id="f-date"></label>
+      </div>
+      <div class="row">
+        <label>Follow up on<input type="date" id="f-follow"></label>
+        <label>Job link<input type="url" id="f-link" placeholder="https://"></label>
+      </div>
+      <label>Notes<textarea id="f-notes" placeholder="Contacts, salary range, interview prep"></textarea></label>
+      <a id="open-link" href="#" target="_blank" rel="noopener noreferrer" hidden>Open job posting</a>
+      <div class="actions">
+        <button type="button" class="danger spacer" id="del">Delete</button>
+        <button type="button" id="cancel">Cancel</button>
+        <button type="submit" class="primary">Save application</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
